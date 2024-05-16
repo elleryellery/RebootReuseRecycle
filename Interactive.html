@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Task: Add a magnifying glass that follows the mouse around. -->
+
+<style>
+    body{
+        background-color: rgb(253, 250, 206);
+    }
+    #statusbox{
+        top:50;
+        height:20px;
+        background-color:rgb(142, 142, 255);
+    }
+    #hexcodes{
+        color:rgb(125, 219, 122);
+    }
+    #toxinbox{
+        background-color: black;
+        color:rgb(255, 255, 255);
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+    }
+</style>
+
+<map name="toxins">
+
+    <!-- Task: Add a toxin location -->
+    <!-- Task: Add a toxin location -->
+    <!-- Task: Add a toxin location -->
+    <!-- Task: Add a toxin location -->
+
+    <area shape="rect" coords="88,210,145,274" alt="Coffee" onmouseover="setToxin(1)" onmouseleave="setToxin(0)">
+
+    <!-- Nearby regions -->
+    <area shape="rect" coords="60,180,185,304" alt="Coffee" onmouseover="changeToxin(4)">
+
+
+</map>
+
+
+<body>
+    <img src="./Images/Mini Site.png" alt="Interactive Mini Site" width="640" height="360"
+    onmouseover="changeToxin(1)" onmouseleave="changeToxin(2)"
+    usemap="#toxins">
+
+    <div id="finder" style="background-color:rgb(0, 0, 0); color:rgb(255, 255, 255); font-family: 'Courier New', Courier, monospace; text-align: center">
+        <div id="statusbox"></div>
+        <p style = "font-size:larger; font-weight: bold;"> Toxin Detector 5000</p>
+        <p id="demo"> 
+            Searching for toxins... </p>
+        <br>
+        
+        
+    </div>
+
+    <!-- Task: Move the toxin box into the top right, next to the the toxin finder image. -->
+    <div id="toxinbox">
+        <h1 id = "Name">Toxin Name</h1>
+        <img id = "Image" src="./Images/Unknown Toxin.png" alt="Toxin Image" width="300" height="300">
+        <h2 id = "Causes"></h2>
+        <p id = "Hazard 1"></p>
+        <p id = "Hazard 2"></p>
+        <p id = "Hazard 3"></p>
+    </div>
+</body>
+
+<script>
+
+    // Task: Add a toxin's information
+    // Task: Add a toxin's information
+    // Task: Add a toxin's information
+    // Task: Add a toxin's information
+
+    const none = {name: "Toxin Name", img: "./Images/Unknown Toxin.png", hazard1: "", hazard2: "", hazard3: ""};
+    const mercury = {name: "Mercury", img: "./Images/Mercury.png", hazard1: "Irritation to the eyes, skin, and stomach.", hazard2: "Cough, chest pain, or difficulty breathing.", hazard3: "Headache, weakness or exhaustion, or weight loss."};
+
+    function changeToxin(id){
+        if(id == 1){
+            document.getElementById("demo").innerHTML = "Keep searching...";
+            document.getElementById("Causes").innerHTML = ""
+            document.getElementById("statusbox").style.backgroundColor = 'rgb(142, 142, 255)';
+        } else if(id == 2){
+            document.getElementById("demo").innerHTML = "Hover over the picture to search for toxins!";
+            document.getElementById("Causes").innerHTML = ""
+        } else if(id == 3){
+            document.getElementById("demo").innerHTML = "Toxin located!";
+            document.getElementById("Causes").innerHTML = "Causes health problems including..."
+            document.getElementById("statusbox").style.backgroundColor = 'rgb(125, 219, 122)';
+
+        } else if(id ==4){
+            document.getElementById("demo").innerHTML = "Toxin detected nearby....";
+            document.getElementById("Causes").innerHTML = ""
+            document.getElementById("statusbox").style.backgroundColor = 'rgb(218, 165, 32)';
+
+        }
+    }
+
+    function displayToxin(toxin){
+        document.getElementById("Name").innerHTML = toxin.name;
+        document.getElementById("Image").src = toxin.img;
+        document.getElementById("Hazard 1").innerHTML = toxin.hazard1;
+        document.getElementById("Hazard 2").innerHTML = toxin.hazard2;
+        document.getElementById("Hazard 3").innerHTML = toxin.hazard3;
+
+    }
+
+    function setToxin(id){
+
+        //Task: Link a toxin to its ID
+        //Task: Link a toxin to its ID
+        //Task: Link a toxin to its ID
+        //Task: Link a toxin to its ID
+
+        changeToxin(3);
+        if(id == 0){
+            displayToxin(none);
+        }
+        else if(id == 1){
+            displayToxin(mercury);
+        }
+    }
+</script>
+</html>
